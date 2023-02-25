@@ -31,12 +31,14 @@ const SearchMons = ({dex}) => {
     }, [searchQuery]); //re-run this function every time searchQuery changes
 
     return (
-        //(e) is the text-input event
-        <div className='flex flex-col w-full justify-center pb-7'>
-        <input type="text" className = 'h-10 bg-neutral-200 text-black text-center' value = {searchQuery} onChange = {(e) => setQuery(e.target.value)} placeholder="Search a Name">
+        //(e) is the text-input event. suggestions listed below as value changes
+        <div className='pt-3 pb-6'>
+        <div className='flex justify-center'>
+        <input type="text" className = 'rounded-md w-80 h-10 bg-neutral-200 text-black text-center' value = {searchQuery} onChange = {(e) => setQuery(e.target.value)} placeholder="Search a Name">
         </input>
-        <div className = "text-amber-200 flex flex-col gap-2 bg-neutral-500">
-            {suggestions.map(sugg => <div className = 'pl-10'><Link href={`/pokemon/${sugg}`}>{sugg}</Link></div>)}
+        </div>
+        <div className = "text-amber-200 gap-2 bg-neutral-500 mt-1 mx-auto w-96 rounded-md">
+            {suggestions.map(sugg => <div className = 'flex justify-center py-1'><Link href={`/pokemon/${sugg}`}>{sugg}</Link></div>)}
         </div>
       </div>
       
