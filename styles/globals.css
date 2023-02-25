@@ -1,9 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-    body {
-        @apply bg-emerald-700 text-neutral-300;
-    }
-}

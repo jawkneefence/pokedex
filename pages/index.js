@@ -34,8 +34,8 @@ export default function Home({monList, fullDex}) {
       </div>
 
       <div className='mt-10 flex justify-center gap-5'>
-        <button disabled={!pokemon.previous} className="disabled:bg-gray-500 px-3 py-1 bg-slate-900" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
-        <button disabled={!pokemon.next} className="disabled:bg-gray-500 px-3 py-1 bg-slate-900" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+        <button disabled={!pokemon.previous} className="disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+        <button disabled={!pokemon.next} className="disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
       </div>
       </Layout>
     )

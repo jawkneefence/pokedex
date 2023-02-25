@@ -12,7 +12,7 @@ const Pokemon = ({pokemon, index}) => {
     return (
         <Link href={`/pokemon/${pokemon.name}`}>
             <a>
-                <div className='bg-stone-700 rounded p-5 flex flex-col justify-center items-center relative'>
+                <div className='bg-slate-600 rounded p-5 flex flex-col justify-center items-center relative'>
                 { endeces ? 
                 <span className='absolute text-3xl text-neutral-400 top-0 right-3 font-bold'>#{endeces}</span>
                 : <span className='absolute text-3xl text-neutral-400 top-0 right-3 font-bold'>#{newIndex}</span>
@@ -22,6 +22,7 @@ const Pokemon = ({pokemon, index}) => {
                     alt={pokemon.name}
                     width={150}
                     height={150}
+                    quality={100}
                     src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${endeces}.png`}>
                 </Image>
                 :
@@ -29,6 +30,7 @@ const Pokemon = ({pokemon, index}) => {
                     alt={pokemon.name}
                     width={150}
                     height={150}
+                    quality={100}
                     src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${newIndex}.png`}>
                 </Image>
                 }
