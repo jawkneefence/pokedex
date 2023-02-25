@@ -1,29 +1,32 @@
 import Layout from "../components/Layout";
 import {useState} from 'react'
 import Pokemon from "../components/Pokemon"
+import SearchMons from '../components/SearchMons';
 
-export default function Home({monList}) {
+const offsetAmount = 50;
+
+export default function Home({monList, fullDex}) {
   //Grid List of Pokemon
   const [pokemon, setPokemon] = useState(monList)
   //Offsetting Mon IDs
   const [offset, setOffset] = useState(0)
-  //Searchbar state
-  const [searchInput, setSearchnput] = useState("");
 
+  /*const fetchNames = async(url) => {
+    const response = await fetch(url);
+    const allNames = await response.json();
+
+  }*/
 
   const fetchPokemon = async (url, next) => {
     const response = await fetch(url);
     const nextMon = await response.json();
-    setOffset(next ? offset+20 : offset-20)
+    setOffset(next ? offset + offsetAmount : offset - offsetAmount)
     setPokemon(nextMon)
   }
 
   return (
-      <Layout title={"Pokédex"}>
-        <div>
-          <input type="text" placeholder="Search a name">
-          </input>
-        </div>
+      <Layout title={"Pokédex"} dex={fullDex}>
+      <SearchMons dex = {fullDex}></SearchMons>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
         {pokemon.results.map((mon, i) => (
           <Pokemon key={i} pokemon={mon} index = {i + offset}></Pokemon>
@@ -38,11 +41,16 @@ export default function Home({monList}) {
     )
 }
 
-export async function getStaticProps(context) {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=45");
-  const monList = await response.json();
-
-  return {
-    props: {monList}
-  }
+export async function getServerSideProps() {
+  const [smallList, largeList] = await Promise.all([
+    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${offsetAmount}`), //to display
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=1279")
+  ])
+  const [monList, fullDex] = await Promise.all([
+    smallList.json(), 
+    largeList.json()
+  ])
+  return { 
+    props: { monList, fullDex } 
+  };
 }

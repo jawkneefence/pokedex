@@ -3,7 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link"
 
-const Layout = ({children, title}) => {
+
+const Layout = ({children, title, dex}) => {
     return (
         <div>
             <Head>
@@ -24,7 +25,7 @@ const Layout = ({children, title}) => {
             </main>
 
             <footer className="flex justify-center items-center mt-10">
-                <a className="flex flex-col">i like anime footer</a>
+                <a className="flex flex-col">Created by Johnny Chong</a>
             </footer>
         </div>
     );

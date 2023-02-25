@@ -31,8 +31,8 @@ const Pokemon = ({mon}) => {
 
     return (
         <Layout title={pokeName}>
-            <div className = 'flex flex-col justify-center items-center'>
-            <span className='absolute text-[12rem] font-bold text-slate-400'>#{newIndex}</span>
+            <div className = 'flex flex-col justify-center items-center pb-10'>
+            <span className='pl-10 absolute text-[12rem] font-bold text-slate-300'>#{newIndex}</span>
             <Image 
                     alt={pokeName}
                     width={250}
@@ -49,6 +49,7 @@ const Pokemon = ({mon}) => {
             </div>
 
             <div className='bg-slate-600 rounded p-5'>
+                Base Stats
                 {renderStats()}
             </div>
         </Layout>
