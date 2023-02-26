@@ -44,7 +44,7 @@ export default function Home({monList, fullDex}) {
 export async function getServerSideProps() {
   const [smallList, largeList] = await Promise.all([
     fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${offsetAmount}`), //to display
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=1279")
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=1008")
   ])
   const [monList, fullDex] = await Promise.all([
     smallList.json(), 
