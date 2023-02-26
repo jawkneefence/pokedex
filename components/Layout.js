@@ -14,11 +14,11 @@ const Layout = ({children, title}) => {
 
             <header className='bg-slate-800 py-10 gap-x-96 flex flex-row justify-center'>
             <Link href = "/">
-                <a className = "absolute left-5">
+                <a className = "absolute top-0.5 left-0.5">
                 <Image
                     alt="home_img"
-                    width={80}
-                    height={80}
+                    width={50}
+                    height={50}
                     src={'https://cdn-icons-png.flaticon.com/512/25/25694.png'}
                     >    
                 </Image>
@@ -36,7 +36,7 @@ const Layout = ({children, title}) => {
                 {children}
             </main>
 
-            <footer className="py-5 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-3">
+            <footer className="pt-5 pb-9 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-3">
                 <Link href="http://www.github.com/jawkneefence/pokedex"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Github</button></Link>
                 <a className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Created by Johnny Chong</a>
             </footer>
