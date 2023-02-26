@@ -12,9 +12,9 @@ const Layout = ({children, title}) => {
                 <meta name="description" content="Pokédex site developed by Johnny Chong"/>
             </Head>
 
-            <header className='bg-slate-800 py-10 gap-x-96 flex flex-row '>
+            <header className='bg-slate-800 py-10 gap-x-96 flex flex-row justify-center'>
             <Link href = "/">
-                <a className = "ml-4">
+                <a className = "absolute left-5">
                 <Image
                     alt="home_img"
                     width={80}
@@ -25,7 +25,7 @@ const Layout = ({children, title}) => {
                 </a>
             </Link>
             <Link href = "/"> 
-                <a className='pl-96'>
+                <a className=''>
                     <div className='text-5xl text-amber-400 mt-5'>{title}</div>
                 </a>
             </Link>
