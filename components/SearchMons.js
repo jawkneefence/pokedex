@@ -37,7 +37,7 @@ const SearchMons = ({dex}) => {
         <input type="text" className = 'rounded-md w-80 h-10 bg-neutral-200 text-black text-center' value = {searchQuery} onChange = {(e) => setQuery(e.target.value)} placeholder="Search a Name">
         </input>
         </div>
-        <div className = "text-amber-200 gap-2 bg-neutral-500 mt-1 mx-auto w-96 rounded-md">
+        <div className = "text-amber-200 gap-2 bg-slate-700 mt-1 mx-auto w-96 rounded-md">
             {suggestions.map(sugg => <div className = 'flex justify-center py-1'><Link href={`/pokemon/${sugg}`}>{sugg}</Link></div>)}
         </div>
       </div>
