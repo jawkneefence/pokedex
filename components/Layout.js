@@ -12,9 +12,9 @@ const Layout = ({children, title}) => {
                 <meta name="description" content="Pokédex site developed by Johnny Chong"/>
             </Head>
 
-            <header className='bg-slate-800 py-10  flex justify-center'>
+            <header className='bg-slate-800 py-10 gap-x-96 flex flex-row '>
             <Link href = "/">
-                <a className = "mr-10 pr-8">
+                <a className = "ml-4">
                 <Image
                     alt="home_img"
                     width={80}
@@ -25,8 +25,8 @@ const Layout = ({children, title}) => {
                 </a>
             </Link>
             <Link href = "/"> 
-                <a>
-                    <div className='text-5xl text-center text-amber-400 mt-5 mr-20 pr-20'>{title}</div>
+                <a className='pl-96'>
+                    <div className='text-5xl text-amber-400 mt-5'>{title}</div>
                 </a>
             </Link>
             
@@ -36,9 +36,9 @@ const Layout = ({children, title}) => {
                 {children}
             </main>
 
-            <footer className="py-5 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-10">
-                <Link href="http://www.github.com/jawkneefence"><a>My Github</a></Link>
-                <a>Created by Johnny Chong</a>
+            <footer className="py-5 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-3">
+                <Link href="http://www.github.com/jawkneefence/pokedex"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Github</button></Link>
+                <a className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Created by Johnny Chong</a>
             </footer>
         </div>
     );

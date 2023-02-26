@@ -4,11 +4,9 @@ import Image from 'next/image'
 
 const Pokemon = ({mon}) => {
     const newIndex = ('000' + (mon.id)).slice(-3)
-    const prevolutionIndex = ('000' + (mon.id-1)).slice(-3)
     const pokeName = mon.name[0].toUpperCase() + mon.name.slice(1)
 
     const renderTypes = () => (
-
         mon.types.map(type => (
             <li key = {type.slot} className = 'px-2 py-1 bg-slate-500 rounded-lg'>
                 <span className = "text-zing-300">{type.type.name.toUpperCase()}</span>
@@ -18,7 +16,6 @@ const Pokemon = ({mon}) => {
 
     const renderStats = () => (
         mon.stats.map((stat, index) => (
-            
             <div className='bg-neutral-400 my-1 p-1 rounded-lg text-neutral-300'>
                 <div className='bg-indigo-800 rounded-lg' style={{width: `${stat.base_stat/1.75}%`}}>
                     <span key = {index} className = 'text-neutral-400 pr-4 pl-1'>{stat.stat.name.toUpperCase()}</span>
@@ -69,46 +66,6 @@ const Pokemon = ({mon}) => {
     else if (currType=="fairy")
     bgcolor = "bg-pink-400"
     else bgcolor="bg-slate-800"
-    /* same logic doesn't work with switch statements for some reason
-    switch(currType) {
-        case "fire":
-            bgcolor = "bg-rose-700";
-        case "grass":
-            bgcolor = "bg-emerald-700";
-        case "normal":
-            bgcolor = "bg-teal-200";
-        case "water":
-            bgcolor = "bg-blue-600";
-        case "electric":
-            bgcolor = "bg-yellow-400";
-        case "ice":
-            bgcolor = "bg-cyan-400";
-        case "fighting":
-            bgcolor = "bg-stone-700";
-        case "poison":
-            bgcolor = "bg-purple-700";
-        case "ground":
-            bgcolor = "bg-amber-800";
-        case "flying":
-            bgcolor = "bg-sky-400";
-        case "psychic":
-            bgcolor = "bg-pink-600";
-        case "rock":
-            bgcolor = "bg-orange-900";
-        case "bug":
-            bgcolor = "bg-amber-400";
-        case "ghost":
-            bgcolor = "bg-stone-900";
-        case "dark":
-            bgcolor = "bg-stone-800";
-        case "dragon":
-            bgcolor = "bg-rose-900";
-        case "steel":
-            bgcolor = "bg-slate-700";
-        case "fairy":
-            bgcolor = "bg-pink-400"
-
-    }*/
 
     return (
         <Layout title={pokeName}>

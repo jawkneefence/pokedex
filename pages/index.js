@@ -11,12 +11,8 @@ export default function Home({monList, fullDex}) {
   //Offsetting Mon IDs
   const [offset, setOffset] = useState(0)
 
-  /*const fetchNames = async(url) => {
-    const response = await fetch(url);
-    const allNames = await response.json();
-
-  }*/
-
+  //onClick function for prev/next buttons
+  //url encoded in api response through {pokemon.previous/next}
   const fetchPokemon = async (url, next) => {
     const response = await fetch(url);
     const nextMon = await response.json();
@@ -25,7 +21,7 @@ export default function Home({monList, fullDex}) {
   }
 
   return (
-      <Layout title={"Pokédex"} dex={fullDex}>
+      <Layout title={"Pokédex"}>
         <div className="flex flex-row justify-center">
         <button disabled={!pokemon.previous} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
         <SearchMons dex = {fullDex}></SearchMons>
@@ -38,8 +34,8 @@ export default function Home({monList, fullDex}) {
       </div>
 
       <div className='mt-10 flex justify-center gap-5'>
-        <button disabled={!pokemon.previous} className="disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
-        <button disabled={!pokemon.next} className="disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+        <button disabled={!pokemon.previous} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+        <button disabled={!pokemon.next} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
       </div>
       </Layout>
     )
