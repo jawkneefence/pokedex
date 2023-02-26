@@ -26,7 +26,11 @@ export default function Home({monList, fullDex}) {
 
   return (
       <Layout title={"Pokédex"} dex={fullDex}>
-      <SearchMons dex = {fullDex}></SearchMons>
+        <div className="flex flex-row justify-center">
+        <button disabled={!pokemon.previous} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+        <SearchMons dex = {fullDex}></SearchMons>
+      <button disabled={!pokemon.next} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
         {pokemon.results.map((mon, i) => (
           <Pokemon key={i} pokemon={mon} index = {i + offset}></Pokemon>

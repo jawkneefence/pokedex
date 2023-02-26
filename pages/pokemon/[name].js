@@ -57,7 +57,7 @@ const Pokemon = ({mon}) => {
     else if (currType=="rock")
     bgcolor = "bg-orange-900"
     else if (currType=="bug")
-    bgcolor = "bg-amber-400"
+    bgcolor = "bg-amber-500"
     else if (currType=="ghost")
     bgcolor = "bg-stone-900"
     else if (currType=="dark")
