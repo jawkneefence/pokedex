@@ -6,6 +6,28 @@ const Pokemon = ({mon}) => {
     const newIndex = ('000' + (mon.id)).slice(-3)
     const pokeName = mon.name[0].toUpperCase() + mon.name.slice(1)
 
+    const formatStat = (statName) => {
+        if(statName == "SPECIAL-ATTACK") {
+            return "SP.ATK"
+        };
+        if(statName == "SPECIAL-DEFENSE") {
+            return "SP.DEF"
+        };
+        if(statName == "ATTACK") {
+            return "ATK";
+        }
+        if(statName == "DEFENSE") {
+            return "DEF";
+        }
+        if(statName == "SPEED") {
+            return "SPD";
+        }
+        if(statName == "HP") {
+            return statName;
+        }
+    }
+    
+
     const renderTypes = () => (
         mon.types.map(type => (
             <li key = {type.slot} className = 'px-2 py-1 bg-slate-500 rounded-lg'>
@@ -16,10 +38,10 @@ const Pokemon = ({mon}) => {
 
     const renderStats = () => (
         mon.stats.map((stat, index) => (
-            <div className='bg-neutral-400 my-1 p-1 rounded-lg text-neutral-300'>
-                <div className='bg-indigo-800 rounded-lg' style={{width: `${stat.base_stat/1.75}%`}}>
-                    <span key = {index} className = 'text-neutral-400 pr-4 pl-1'>{stat.stat.name.toUpperCase()}</span>
-                    <span className = "text-neutral-200" >{stat.base_stat}</span>
+            <div className='bg-neutral-500 my-1 p-1 rounded-lg text-neutral-300'>
+                <div className='bg-indigo-800 rounded-lg w-max-100' style={{width: `${stat.base_stat < 169 ? stat.base_stat/1.6 : stat.base_stat/2.25}%`}}>
+                    <span key = {index} className = 'text-neutral-400'>{formatStat(stat.stat.name.toUpperCase())}</span>
+                    <span className = "ml-1 text-slate-200" >{stat.base_stat}</span>
                 </div>
             </div>
         ))
@@ -28,49 +50,48 @@ const Pokemon = ({mon}) => {
     //type-color matching
     let bgcolor = "";
     const currType = mon.types[0].type.name;
-
-    if(currType=="fire")
-    bgcolor = "bg-rose-700"
-    else if (currType=="grass")
-    bgcolor = "bg-emerald-700"
-    else if (currType=="normal")
-    bgcolor = "bg-teal-200"
-    else if (currType=="water")
-    bgcolor = "bg-blue-600"
-    else if (currType=="electric")
-    bgcolor = "bg-yellow-400"
-    else if (currType=="ice")
-    bgcolor = "bg-cyan-400"
-    else if (currType=="fighting")
-    bgcolor = "bg-stone-700"
-    else if (currType=="poison")
-    bgcolor = "bg-purple-700"
-    else if (currType=="ground")
-    bgcolor = "bg-amber-800"
-    else if (currType=="flying")
-    bgcolor = "bg-sky-400"
-    else if (currType=="psychic")
-    bgcolor = "bg-pink-600"
-    else if (currType=="rock")
-    bgcolor = "bg-orange-900"
-    else if (currType=="bug")
-    bgcolor = "bg-amber-500"
-    else if (currType=="ghost")
-    bgcolor = "bg-stone-900"
-    else if (currType=="dark")
-    bgcolor = "bg-stone-800"
-    else if (currType=="dragon")
-    bgcolor = "bg-rose-900"
-    else if (currType=="steel")
-    bgcolor = "bg-stone-500"
-    else if (currType=="fairy")
-    bgcolor = "bg-pink-400"
-    else bgcolor="bg-slate-800"
+        if(currType=="fire")
+        bgcolor = "bg-rose-700"
+        else if (currType=="grass")
+        bgcolor = "bg-emerald-700"
+        else if (currType=="normal")
+        bgcolor = "bg-orange-300"
+        else if (currType=="water")
+        bgcolor = "bg-blue-600"
+        else if (currType=="electric")
+        bgcolor = "bg-yellow-400"
+        else if (currType=="ice")
+        bgcolor = "bg-cyan-400"
+        else if (currType=="fighting")
+        bgcolor = "bg-stone-700"
+        else if (currType=="poison")
+        bgcolor = "bg-purple-700"
+        else if (currType=="ground")
+        bgcolor = "bg-amber-800"
+        else if (currType=="flying")
+        bgcolor = "bg-sky-400"
+        else if (currType=="psychic")
+        bgcolor = "bg-pink-600"
+        else if (currType=="rock")
+        bgcolor = "bg-orange-900"
+        else if (currType=="bug")
+        bgcolor = "bg-amber-500"
+        else if (currType=="ghost")
+        bgcolor = "bg-stone-900"
+        else if (currType=="dark")
+        bgcolor = "bg-stone-800"
+        else if (currType=="dragon")
+        bgcolor = "bg-rose-900"
+        else if (currType=="steel")
+        bgcolor = "bg-stone-500"
+        else if (currType=="fairy")
+        bgcolor = "bg-pink-400"
+        else bgcolor="bg-slate-800"
 
     return (
         <Layout title={pokeName}>
-            <div className = 'flex flex-col justify-center items-center pb-10'>
-            <span className='left-20 absolute text-[10rem] font-bold text-slate-300 text-opacity-20'>#{newIndex}</span>
+            <div className = 'flex flex-col justify-center items-center pb-5'>
+            <span className='text-[5rem] font-bold text-slate-300 text-opacity-20'>#{newIndex}</span>
             <Image 
                     alt={pokeName}
                     width={300}

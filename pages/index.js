@@ -26,20 +26,20 @@ export default function Home({monList, fullDex}) {
 
   return (
       <Layout title={"Pokédex"}>
-        <div className="sm:flex flex-row justify-center">
-        <button disabled={!pokemon.previous} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+        <div class="gap-2 md:gap-20 lg:gap-60 w-full flex flex-row flex-initial flex-nowrap justify-center items-stretch">
+        <button disabled={!pokemon.previous} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
         <SearchMons dex = {fullDex}></SearchMons>
-      <button disabled={!pokemon.next} className="mb-5 md: rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300 mt-3" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      <button disabled={!pokemon.next} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300 " onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
         {pokemon.results.map((mon, i) => (
           <Pokemon key={i} pokemon={mon} index = {i + offset}></Pokemon>
         ))}
       </div>
 
-      <div className='mt-5 flex justify-center gap-5'>
-        <button disabled={!pokemon.previous} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
-        <button disabled={!pokemon.next} className="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      <div class='mt-5 flex justify-center gap-5'>
+        <button disabled={!pokemon.previous} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+        <button disabled={!pokemon.next} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
       </div>
       </Layout>
     )
