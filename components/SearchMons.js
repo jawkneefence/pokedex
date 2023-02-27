@@ -34,7 +34,7 @@ const SearchMons = ({dex}) => {
         //(e) is the text-input event. suggestions listed below as value changes
         <div class='pt-3 pb-6'>
         <div class='flex justify-center'>
-        <input type="text" class = 'rounded-md h-10 bg-neutral-200 text-black text-center sm:w-9/12 md:w-11/12 lg:w-96' value = {searchQuery} onChange = {(e) => setQuery(e.target.value)} placeholder="Search a Name">
+        <input type="text" class = 'rounded-md h-10 bg-neutral-200 text-black text-center w-9/12 md:w-11/12 lg:w-96' value = {searchQuery} onChange = {(e) => setQuery(e.target.value)} placeholder="Search a Name">
         </input>
         </div>
         <div class = "text-amber-200 gap-2 bg-slate-700 mt-1 mx-auto w-9/10 rounded-md">
