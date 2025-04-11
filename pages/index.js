@@ -25,11 +25,14 @@ export default function Home({monList, fullDex}) {
   }
 
   return (
-      <Layout title={"Pokédex"}>
-        <div class="gap-2 md:gap-20 lg:gap-60 w-full flex flex-row flex-initial flex-nowrap justify-center items-stretch">
-        <button disabled={!pokemon.previous} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+      <Layout title={"My Pokédex"}>
+        <div class="gap-2 md:gap-20 lg:gap-48 w-full flex flex-row flex-initial flex-nowrap justify-center items-stretch mt-2">
+        <button disabled={!pokemon.previous} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
         <SearchMons dex = {fullDex}></SearchMons>
-      <button disabled={!pokemon.next} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300 " onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      <button disabled={!pokemon.next} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300 " onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      </div>
+      <div class="w-full flex flex-row justify-center mb-2">
+      <span class="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
         {pokemon.results.map((mon, i) => (
@@ -37,9 +40,12 @@ export default function Home({monList, fullDex}) {
         ))}
       </div>
 
+      <div class="w-full flex flex-row justify-center mt-3">
+      <span class="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
+      </div>
       <div class='mt-5 flex justify-center gap-5'>
-        <button disabled={!pokemon.previous} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
-        <button disabled={!pokemon.next} class="rounded-md h-9 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+        <button disabled={!pokemon.previous} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
+        <button disabled={!pokemon.next} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
       </div>
       </Layout>
     )

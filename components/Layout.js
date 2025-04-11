@@ -11,25 +11,13 @@ const Layout = ({children, title}) => {
                 <title>{title}</title>
                 <meta name="description" content="Pokédex site developed by Johnny Chong"/>
             </Head>
+            <header className='bg-slate-800 py-10 flex flex-row justify-center'>
 
-            <header className='bg-slate-800 py-10 gap-x-96 flex flex-row justify-center'>
-            <Link href = "/">
-                <a className = "absolute top-0.5 left-0.5">
-                <Image
-                    alt="home_img"
-                    width={50}
-                    height={50}
-                    src={'https://cdn-icons-png.flaticon.com/512/25/25694.png'}
-                    >    
-                </Image>
-                </a>
-            </Link>
             <Link href = "/"> 
                 <a className=''>
-                    <div className='text-5xl text-amber-400 mt-5'>{title}</div>
+                    <div className='text-5xl text-amber-400 mt-2'>{title}</div>
                 </a>
             </Link>
-            
             </header>
 
             <main className=" bg-slate-500">
@@ -38,7 +26,7 @@ const Layout = ({children, title}) => {
 
             <footer className="pt-5 pb-9 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-3">
                 <Link href="http://www.github.com/jawkneefence/pokedex"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Github</button></Link>
-                <a className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Created by Johnny Chong</a>
+                <Link href="https://www.johnnychongdev.site"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Created by Johnny Chong</button></Link>
             </footer>
         </div>
     );
