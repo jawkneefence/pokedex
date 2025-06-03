@@ -36,7 +36,7 @@ const Searchbar = ({dex}) => {
 
     return (
         //(e) is the text-input onChange event
-        <div className='pt-3 pb-6'>
+        <div className="mb-1">
         <div className='flex justify-center'>
         <input type="text" className = 'rounded-md h-10 bg-neutral-200 text-black text-center w-9/12 md:w-11/12 lg:w-96' 
         value = {searchQuery} onChange = {(e) => {

@@ -20,7 +20,7 @@ const Layout = ({children, title}) => {
             </Link>
             </header>
 
-            <main className=" bg-slate-500">
+            <main className=" bg-slate-800">
                 {children}
             </main>
 
