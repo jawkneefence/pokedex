@@ -1,51 +1,64 @@
 import Layout from "../components/Layout";
 import {useState} from 'react'
 import Pokemon from "../components/Pokemon"
-import SearchMons from '../components/SearchMons';
+import Searchbar from '../components/Searchbar';
 
 const offsetAmount = 48;
 
 export default function Home({monList, fullDex}) {
-  //List of Pokemon
-  const [pokemon, setPokemon] = useState(monList)
-  //Offsetting Mon IDs
+  //List State
+  const [pokemons48, setPokemons48] = useState(monList)
+  //Offsets mon-id#
   const [offset, setOffset] = useState(0)
 
   //onClick function for prev/next buttons
-  //url encoded in api response through {pokemon.previous/next}
+  //(JSON):{pokemon.previous or pokemon.next}
   //stops at dex entry #1008
   const fetchPokemon = async (url, next) => {
     const response = await fetch(url);
     const nextMon = await response.json();
+    console.log('nextmon: ', nextMon);
+    //next or prev button press? : + or - offset
     setOffset(next ? offset + offsetAmount : offset - offsetAmount)
     if(offset > 911) {
       nextMon.next = false;
     }
-    setPokemon(nextMon)
+    setPokemons48(nextMon)
   }
 
   return (
-      <Layout title={"My Pokédex"}>
-        <div class="gap-2 md:gap-20 lg:gap-48 w-full flex flex-row flex-initial flex-nowrap justify-center items-stretch mt-2">
-        <button disabled={!pokemon.previous} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
-        <SearchMons dex = {fullDex}></SearchMons>
-      <button disabled={!pokemon.next} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300 " onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      <Layout title={"My Pokédex"}> {/*Set Title*/}
+        {/*Container Div*/}
+        <div className="gap-2 md:gap-20 lg:gap-48 w-full flex flex-row flex-initial flex-nowrap justify-center items-stretch mt-2"> 
+        
+        {/*Previous Button*/}
+        <button disabled={!pokemons48.previous} className="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
+
+        {/*SearchBar*/}
+        <Searchbar dex = {fullDex}></Searchbar>
+
+        {/*Next Button*/}
+      <button disabled={!pokemons48.next} className="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 mt-3 bg-slate-300 " onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
       </div>
-      <div class="w-full flex flex-row justify-center mb-2">
-      <span class="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
+        
+        {/*Counter*/}
+      <div className="w-full flex flex-row justify-center mb-2">
+      <span className="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
-        {pokemon.results.map((mon, i) => (
+      {/*Pokemon Grid*/}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
+        {/*Map 48 per page.*/}
+        {pokemons48.results.map((mon, i) => (
           <Pokemon key={i} pokemon={mon} index = {i + offset}></Pokemon>
         ))}
       </div>
 
-      <div class="w-full flex flex-row justify-center mt-3">
-      <span class="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
+      <div className="w-full flex flex-row justify-center mt-3">
+      <span className="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
       </div>
-      <div class='mt-5 flex justify-center gap-5'>
-        <button disabled={!pokemon.previous} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.previous, false)}>Prev</button>
-        <button disabled={!pokemon.next} class="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemon.next, true)}>Next</button>
+      <div className='mt-5 flex justify-center gap-5'>
+        <button disabled={!pokemons48.previous} className="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
+        <button disabled={!pokemons48.next} className="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
       </div>
       </Layout>
     )
