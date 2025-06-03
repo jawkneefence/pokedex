@@ -7,7 +7,7 @@ const offsetAmount = 48;
 
 export default function Home({monList, fullDex}) {
   //List State
-  const [pokemons48, setPokemons48] = useState(monList)
+  const [pokemons48, setPokemons48] = useState(monList);
   //Offsets mon-id#
   const [offset, setOffset] = useState(0);
 
@@ -16,15 +16,15 @@ export default function Home({monList, fullDex}) {
   //stops at dex entry #1008
   const fetchPokemon = async (url, next) => {
     const response = await fetch(url);
-    const nextMon = await response.json();
+    const nextMons = await response.json();
     
     //next or prev button press? : + or - offset
     setOffset(next ? offset + offsetAmount : offset - offsetAmount)
     console.log('offset: ', offset);
     if(offset > 911) {
-      nextMon.next = false;
+      nextMons.next = false;
     }
-    setPokemons48(nextMon)
+    setPokemons48(nextMons);
   }
 
   return (
@@ -53,12 +53,16 @@ export default function Home({monList, fullDex}) {
           <Pokemon key={i} pokemon={mon} index = {i + offset}></Pokemon>
         ))}
       </div>
-
+      {/*Container Div*/}
       <div className="w-full flex flex-row justify-center mt-3">
+        {/*Counter*/}
       <span className="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
       </div>
+      {/*Container Div*/}
       <div className='mt-5 flex justify-center gap-5 pb-1'>
+        {/*Previous Button*/}
         <button disabled={!pokemons48.previous} className="rounded-md h-8 disabled:bg-gray-500 px-3  bg-slate-300" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
+        {/*Next Button*/}
         <button disabled={!pokemons48.next} className="rounded-md h-8 disabled:bg-gray-500 px-3  bg-slate-300" onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
       </div>
       </Layout>

@@ -47,7 +47,7 @@ const Pokemon = ({pokemon, index}) => {
                     src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${newIndex}.png`}>
                 </Image>
                 }
-                <span className='uppercase font-semibold tracking-wider text-amber-400'>{pokemon.name}</span>
+                <p className='text-center uppercase font-semibold tracking-wider text-amber-400'>{pokemon.name}</p>
             </a>
         </Link>
         </Tilt>
