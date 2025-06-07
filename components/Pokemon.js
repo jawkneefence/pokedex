@@ -4,7 +4,7 @@ import Link from "next/link"
 
 import {Tilt} from "react-tilt";
 import { motion } from "framer-motion";
-import { fadeIn, textVariant } from "../utils/motion";
+import { zoomIn } from "../utils/motion";
 
 const Pokemon = ({pokemon, index}) => {
     const newIndex = ('000' + (index + 1)).slice(-3)
@@ -13,9 +13,22 @@ const Pokemon = ({pokemon, index}) => {
         endeces = ('000' + (index + 1)).slice(-4)
     }
     else endeces = 0;
+    /*
+    const variants = {
+        fadeIn: {
+            direction: "up",
+            type: 'spring',
+            delay: index * 0.5,
+            duration: 0.75
+        },
+        zoomIn: {
+            delay: 0.1,
+            duration: 0.3
+        }
+    }*/
 
     return (
-        <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+        <motion.div variants = {zoomIn(1, 3)}>
       <Tilt
         options={{
           max: 20,

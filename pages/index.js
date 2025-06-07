@@ -33,13 +33,13 @@ export default function Home({monList, fullDex}) {
         <div className="gap-2 md:gap-20 lg:gap-48 w-full flex flex-row flex-initial flex-nowrap justify-center items-stretch pt-3"> 
         
         {/*Previous Button*/}
-        <button disabled={!pokemons48.previous} className="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
+        <button disabled={!pokemons48.previous} className="rounded-md bg-orange-300 h-8 disabled:bg-gray-500 px-3 py-1" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
 
         {/*SearchBar*/}
         <Searchbar dex = {fullDex}></Searchbar>
 
         {/*Next Button*/}
-      <button disabled={!pokemons48.next} className="rounded-md h-8 disabled:bg-gray-500 px-3 py-1 bg-slate-300 " onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
+      <button disabled={!pokemons48.next} className="rounded-md bg-orange-300 h-8 disabled:bg-gray-500 px-3 py-1" onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
       </div>
         
         {/*Counter*/}
@@ -53,17 +53,16 @@ export default function Home({monList, fullDex}) {
           <Pokemon key={i} pokemon={mon} index = {i + offset}></Pokemon>
         ))}
       </div>
-      {/*Container Div*/}
-      <div className="w-full flex flex-row justify-center mt-3">
-        {/*Counter*/}
+       {/*Counter*/}
+      <div className="w-full flex flex-row justify-center mt-2">
       <span className="font-semibold text-gray-200">{(offset/48)+1}/{(1008/offsetAmount)}</span>
       </div>
       {/*Container Div*/}
-      <div className='mt-5 flex justify-center gap-5 pb-1'>
+      <div className='mt-2 pb-2 flex justify-center gap-7'>
         {/*Previous Button*/}
-        <button disabled={!pokemons48.previous} className="rounded-md h-8 disabled:bg-gray-500 px-3  bg-slate-300" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
+        <button disabled={!pokemons48.previous} className="rounded-md h-8 disabled:bg-gray-500 px-3  bg-orange-300" onClick={() => fetchPokemon(pokemons48.previous, false)}>Prev</button>
         {/*Next Button*/}
-        <button disabled={!pokemons48.next} className="rounded-md h-8 disabled:bg-gray-500 px-3  bg-slate-300" onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
+        <button disabled={!pokemons48.next} className="rounded-md h-8 disabled:bg-gray-500 px-3  bg-orange-300" onClick={() => fetchPokemon(pokemons48.next, true)}>Next</button>
       </div>
       </Layout>
     )

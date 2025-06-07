@@ -24,9 +24,9 @@ const Layout = ({children, title}) => {
                 {children}
             </main>
 
-            <footer className="pt-5 pb-9 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-3">
-                <Link href="http://www.github.com/jawkneefence/pokedex"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Github</button></Link>
+            <footer className="pt-2 pb-4 container flex justify-center items-center flex-row mx-auto bg-slate-500 gap-3">
                 <Link href="https://www.johnnychongdev.site"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Created by Johnny Chong</button></Link>
+                <Link href="http://www.github.com/jawkneefence/pokedex"><button className='rounded-md h-6 px-3 bg-slate-700 text-neutral-300'>Github</button></Link>
             </footer>
         </div>
     );
