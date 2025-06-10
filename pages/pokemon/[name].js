@@ -131,7 +131,7 @@ const Pokemon = ({ mon, monSpecies }) => {
         <span className="font-bold text-[1.2rem] text-slate-400">
           Weight: {mon.weight}lbs.
         </span>
-        <span className="mt-2 font-bold text-[1.5rem] text-slate-300">
+        <span className="mt-2 font-bold text-balance text-[1.5rem] text-slate-300">
           {randomFT}
         </span>
         <div className="m-1 mt-2 p-3 bg-neutral-600 rounded-lg w-1/7">
